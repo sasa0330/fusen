@@ -12,14 +12,17 @@ export default function Home() {
 
   return (
     <main className="flex h-screen flex-col">
-      <div className="flex h-4/5 w-full flex-wrap overflow-scroll">
-        {cards &&
-          cards.map((card) => (
-            <React.Fragment key={card.id}>
-              <Card id={card.id}>{card.text}</Card>
-            </React.Fragment>
-          ))}
+      <div className="h-4/5 overflow-scroll">
+        <div className="flex w-full flex-wrap gap-2">
+          {cards &&
+            cards.map((card) => (
+              <React.Fragment key={card.id}>
+                <Card id={card.id}>{card.text}</Card>
+              </React.Fragment>
+            ))}
+        </div>
       </div>
+
       <Sidebar cards={cards} cardsDispatch={cardsDispatch} />
     </main>
   );

@@ -7,7 +7,8 @@ function Card({ id, children }: { id: number; children: string }) {
   const cardsDispatch = useCardsDispatch();
 
   return (
-    <div className="m-2 h-[200px] w-[200px] bg-yellow-200 p-2">
+    <div className="h-[200px] w-[200px] bg-yellow-200 p-2">
+      <div>{id}</div>
       <div className="h-[139px] w-[168px] text-xs text-black">
         {isEdit ? (
           <textarea

@@ -11,7 +11,7 @@ export const Sidebar = ({
   return (
     <div className="h-1/5 w-full border p-2">
       <div
-        className="h-[60px] w-[60px] bg-slate-500"
+        className="h-[60px] w-[60px] cursor-pointer bg-yellow-200"
         onClick={() =>
           cards &&
           cardsDispatch({
