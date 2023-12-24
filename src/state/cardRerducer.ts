@@ -1,3 +1,4 @@
+import { setLocalStrage } from "@/lib/utils";
 import { createContext, useContext } from "react";
 
 type Action =
@@ -23,7 +24,7 @@ export const cardsReducer = (state: CardType[], action: Action) => {
         id: payload.id,
         text: payload.text,
       });
-      window.localStorage.setItem("cards", JSON.stringify(copyState));
+      setLocalStrage("cards", copyState);
       return copyState;
     }
     case "UPDATE": {
@@ -37,7 +38,7 @@ export const cardsReducer = (state: CardType[], action: Action) => {
           return card;
         }
       });
-      window.localStorage.setItem("cards", JSON.stringify(result));
+      setLocalStrage("cards", result);
       return result;
     }
     case "DELETE": {
@@ -46,7 +47,7 @@ export const cardsReducer = (state: CardType[], action: Action) => {
           return card;
         }
       });
-      window.localStorage.setItem("cards", JSON.stringify(result));
+      setLocalStrage("cards", result);
       return result;
     }
     default:
