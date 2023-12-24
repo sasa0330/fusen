@@ -14,7 +14,7 @@ type Action =
       payload: Omit<CardType, "text">;
     };
 
-export const cardsReducer = (state: CardsType, action: Action) => {
+export const cardsReducer = (state: CardType[], action: Action) => {
   const { type, payload } = action;
   const copyState = state.slice();
   switch (type) {
@@ -23,6 +23,7 @@ export const cardsReducer = (state: CardsType, action: Action) => {
         id: payload.id,
         text: payload.text,
       });
+      window.localStorage.setItem("cards", JSON.stringify(copyState));
       return copyState;
     }
     case "UPDATE": {
@@ -36,6 +37,7 @@ export const cardsReducer = (state: CardsType, action: Action) => {
           return card;
         }
       });
+      window.localStorage.setItem("cards", JSON.stringify(result));
       return result;
     }
     case "DELETE": {
@@ -44,7 +46,7 @@ export const cardsReducer = (state: CardsType, action: Action) => {
           return card;
         }
       });
-
+      window.localStorage.setItem("cards", JSON.stringify(result));
       return result;
     }
     default:

@@ -4,13 +4,11 @@ import Card from "@/components/Card";
 import { Button } from "@/components/atoms/Button";
 import { useCards } from "@/state/CardsContext";
 import { useCardsDispatch } from "@/state/cardRerducer";
-import { useState } from "react";
 
 export default function Home() {
   const cards = useCards();
   const cardsDispatch = useCardsDispatch();
 
-  const [deleteTarget, setDeleteTarget] = useState<number>(0);
   return (
     <main>
       <Button
