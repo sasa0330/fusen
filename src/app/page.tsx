@@ -1,30 +1,17 @@
 "use client";
 
 import Card from "@/components/Card";
-import { Button } from "@/components/atoms/Button";
 import { useCards } from "@/state/CardsContext";
 import { useCardsDispatch } from "@/state/cardRerducer";
+import { Sidebar } from "./_components/Sidebar";
 
 export default function Home() {
   const cards = useCards();
   const cardsDispatch = useCardsDispatch();
 
   return (
-    <main>
-      <Button
-        onClick={() =>
-          cards &&
-          cardsDispatch({
-            type: "ADD",
-            payload: {
-              id: cards.length + 1,
-              text: "テキストテスト",
-            },
-          })
-        }
-      >
-        追加
-      </Button>
+    <main className="flex">
+      <Sidebar cards={cards} cardsDispatch={cardsDispatch} />
 
       <div>
         {cards &&

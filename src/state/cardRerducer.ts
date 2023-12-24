@@ -1,21 +1,8 @@
 import { setLocalStrage } from "@/lib/utils";
+import { Action, Card } from "@/type/card";
 import { createContext, useContext } from "react";
 
-type Action =
-  | {
-      type: "ADD";
-      payload: CardType;
-    }
-  | {
-      type: "UPDATE";
-      payload: CardType;
-    }
-  | {
-      type: "DELETE";
-      payload: Omit<CardType, "text">;
-    };
-
-export const cardsReducer = (state: CardType[], action: Action) => {
+export const cardsReducer = (state: Card[], action: Action) => {
   const { type, payload } = action;
   const copyState = state.slice();
   switch (type) {
