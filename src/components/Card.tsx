@@ -7,8 +7,8 @@ function Card({ id, children }: { id: number; children: string }) {
   const cardsDispatch = useCardsDispatch();
 
   return (
-    <div className="w-[200px] h-[200px] bg-yellow-200 p-2 mb-2">
-      <div className="w-[168px] h-[139px] text-black text-xs">
+    <div className="m-2 h-[200px] w-[200px] bg-yellow-200 p-2">
+      <div className="h-[139px] w-[168px] text-xs text-black">
         {isEdit ? (
           <textarea
             autoFocus={true}

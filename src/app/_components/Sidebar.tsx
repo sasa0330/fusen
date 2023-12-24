@@ -9,9 +9,9 @@ export const Sidebar = ({
   cardsDispatch: React.Dispatch<Action>;
 }) => {
   return (
-    <div className="p-2 h-[300px] w-fit border">
+    <div className="h-1/5 w-full border p-2">
       <div
-        className="w-[60px] h-[60px]"
+        className="h-[60px] w-[60px] bg-slate-500"
         onClick={() =>
           cards &&
           cardsDispatch({
