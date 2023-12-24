@@ -1,6 +1,6 @@
 import { useCardsDispatch } from "@/state/cardRerducer";
 import React, { useState } from "react";
-import { Button } from "./atoms/Button";
+import { Delete } from "./icons/Delete";
 
 function Card({ id, children }: { id: number; children: string }) {
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -8,19 +8,6 @@ function Card({ id, children }: { id: number; children: string }) {
 
   return (
     <div className="w-[200px] h-[200px] bg-yellow-200 p-2 mb-2">
-      <Button
-        variable="secondary"
-        onClick={() =>
-          cardsDispatch({
-            type: "DELETE",
-            payload: {
-              id: Number(id),
-            },
-          })
-        }
-      >
-        削除
-      </Button>
       <div className="w-[168px] h-[139px] text-black text-xs">
         {isEdit ? (
           <textarea
@@ -40,6 +27,18 @@ function Card({ id, children }: { id: number; children: string }) {
           <div onClick={() => setIsEdit(true)}>{children}</div>
         )}
       </div>
+      <button
+        onClick={() =>
+          cardsDispatch({
+            type: "DELETE",
+            payload: {
+              id: Number(id),
+            },
+          })
+        }
+      >
+        <Delete />
+      </button>
     </div>
   );
 }
