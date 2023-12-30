@@ -1,10 +1,10 @@
-import { useCardsDispatch } from "@/state/cardRerducer";
 import React, { useState } from "react";
 import { Delete } from "./icons/Delete";
+import { useCards } from "@/state/useCards";
 
 function Card({ id, children }: { id: number; children: string }) {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const cardsDispatch = useCardsDispatch();
+  const { cardsDispatch } = useCards();
 
   return (
     <div className="h-[200px] w-[200px] bg-yellow-200 p-2">

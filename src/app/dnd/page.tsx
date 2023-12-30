@@ -45,7 +45,6 @@ function SortableItem({ id, children }: SortableItemProps) {
 export default function Page(): JSX.Element {
   const [state, setState] =
     useState<{ id: string; content: string }[]>(contents);
-  console.log(state);
   const handleDragEnd = useCallback(
     (event: any) => {
       const { active, over } = event;

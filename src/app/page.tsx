@@ -1,14 +1,12 @@
 "use client";
 
 import Card from "@/components/Card";
-import { useCards } from "@/state/CardsContext";
-import { useCardsDispatch } from "@/state/cardRerducer";
 import { Sidebar } from "./_components/Sidebar";
 import React from "react";
+import { useCards } from "@/state/useCards";
 
 export default function Home() {
-  const cards = useCards();
-  const cardsDispatch = useCardsDispatch();
+  const { cards } = useCards();
 
   return (
     <main className="flex h-screen flex-col">
@@ -23,7 +21,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Sidebar cards={cards} cardsDispatch={cardsDispatch} />
+      <Sidebar />
     </main>
   );
 }

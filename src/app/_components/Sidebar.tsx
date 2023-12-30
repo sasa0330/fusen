@@ -1,13 +1,8 @@
-import { Action, Card } from "@/type/card";
+import { useCards } from "@/state/useCards";
 import React from "react";
 
-export const Sidebar = ({
-  cards,
-  cardsDispatch,
-}: {
-  cards: Card[] | null;
-  cardsDispatch: React.Dispatch<Action>;
-}) => {
+export const Sidebar = ({}) => {
+  const { cards, cardsDispatch } = useCards();
   return (
     <div className="h-1/5 w-full border p-2">
       <div

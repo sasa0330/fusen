@@ -1,6 +1,5 @@
 import { setLocalStrage } from "@/lib/utils";
 import { Action, Card } from "@/type/card";
-import { createContext, useContext } from "react";
 
 export const cardsReducer = (state: Card[], action: Action) => {
   const { type, payload } = action;
@@ -29,6 +28,7 @@ export const cardsReducer = (state: Card[], action: Action) => {
       return result;
     }
     case "DELETE": {
+      console.log("DELETE");
       const result = copyState.filter((card) => {
         if (card.id !== payload.id) {
           return card;
@@ -39,6 +39,7 @@ export const cardsReducer = (state: Card[], action: Action) => {
       result.forEach((r, i) => {
         r.id = i;
       });
+
       setLocalStrage("cards", result);
       return result;
     }
@@ -47,8 +48,3 @@ export const cardsReducer = (state: Card[], action: Action) => {
       return state;
   }
 };
-
-export const CardsDispatchContext = createContext<React.Dispatch<Action>>(
-  () => {}
-);
-export const useCardsDispatch = () => useContext(CardsDispatchContext);
