@@ -34,6 +34,11 @@ export const cardsReducer = (state: Card[], action: Action) => {
           return card;
         }
       });
+
+      // idが歯抜けになるので 連番で振り直す
+      result.forEach((r, i) => {
+        r.id = i;
+      });
       setLocalStrage("cards", result);
       return result;
     }
