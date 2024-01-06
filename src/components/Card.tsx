@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { Delete } from "./icons/Delete";
-import { useCards } from "@/state/useCards";
+import { Action } from "@/type/card";
 
-function Card({ id, children }: { id: number; children: string }) {
+function Card({
+  id,
+  children,
+  cardsDispatch,
+}: {
+  id: number;
+  children: string;
+  // DispatchをContextから受け取るとうまく動かないため propsで受け取る
+  cardsDispatch: React.Dispatch<Action>;
+}) {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const { cardsDispatch } = useCards();
 
   return (
     <div className="h-[200px] w-[200px] bg-yellow-200 p-2">
@@ -29,14 +37,14 @@ function Card({ id, children }: { id: number; children: string }) {
         )}
       </div>
       <button
-        onClick={() =>
+        onClick={() => {
           cardsDispatch({
             type: "DELETE",
             payload: {
               id: Number(id),
             },
-          })
-        }
+          });
+        }}
       >
         <Delete />
       </button>

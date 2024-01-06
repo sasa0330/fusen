@@ -1,22 +1,13 @@
-import { useCards } from "@/state/useCards";
+import { useCards } from "@/state/cardRerducer";
 import React from "react";
 
-export const Sidebar = ({}) => {
-  const { cards, cardsDispatch } = useCards();
+export const Sidebar = ({ hundleAddCard }: { hundleAddCard: () => void }) => {
+  const { cards } = useCards();
   return (
     <div className="h-1/5 w-full border p-2">
       <div
         className="h-[60px] w-[60px] cursor-pointer bg-yellow-200"
-        onClick={() =>
-          cards &&
-          cardsDispatch({
-            type: "ADD",
-            payload: {
-              id: cards.length + 1,
-              text: "テキストテスト",
-            },
-          })
-        }
+        onClick={() => cards && hundleAddCard()}
       ></div>
     </div>
   );

@@ -17,9 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <CardsProvider>
-        <body className={inter.className}>{children}</body>
-      </CardsProvider>
+      <body className={inter.className}>
+        <CardsProvider> {children}</CardsProvider>
+      </body>
     </html>
   );
 }

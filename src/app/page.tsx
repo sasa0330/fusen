@@ -3,10 +3,10 @@
 import Card from "@/components/Card";
 import { Sidebar } from "./_components/Sidebar";
 import React from "react";
-import { useCards } from "@/state/useCards";
+import { useCards } from "@/state/cardRerducer";
 
 export default function Home() {
-  const { cards } = useCards();
+  const { cards, cardsDispatch } = useCards();
 
   return (
     <main className="flex h-screen flex-col">
@@ -15,13 +15,25 @@ export default function Home() {
           {cards &&
             cards.map((card) => (
               <React.Fragment key={card.id}>
-                <Card id={card.id}>{card.text}</Card>
+                <Card id={card.id} cardsDispatch={cardsDispatch}>
+                  {card.text}
+                </Card>
               </React.Fragment>
             ))}
         </div>
       </div>
 
-      <Sidebar />
+      <Sidebar
+        hundleAddCard={() =>
+          cardsDispatch({
+            type: "ADD",
+            payload: {
+              id: cards.length + 1,
+              text: "テキストテスト",
+            },
+          })
+        }
+      />
     </main>
   );
 }

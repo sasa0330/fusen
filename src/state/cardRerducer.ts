@@ -1,5 +1,6 @@
-import { setLocalStrage } from "@/lib/utils";
+import { getLocalStrage, setLocalStrage } from "@/lib/utils";
 import { Action, Card } from "@/type/card";
+import { useReducer } from "react";
 
 export const cardsReducer = (state: Card[], action: Action) => {
   const { type, payload } = action;
@@ -28,7 +29,6 @@ export const cardsReducer = (state: Card[], action: Action) => {
       return result;
     }
     case "DELETE": {
-      console.log("DELETE");
       const result = copyState.filter((card) => {
         if (card.id !== payload.id) {
           return card;
@@ -44,7 +44,16 @@ export const cardsReducer = (state: Card[], action: Action) => {
       return result;
     }
     default:
-      console.log("登録されていないアクションタイプ...");
       return state;
   }
+};
+
+// TODO ここ綺麗に
+// https://zenn.dev/sorye/articles/usereducer-and-usecontext-in-typescript#createcontext-%E3%81%AE%E5%AE%9F%E8%A3%85-(provider)
+export const useCards = () => {
+  const strageCards = getLocalStrage("cards");
+  const defaultCards: Card[] = strageCards ? strageCards : [];
+  const [cards, cardsDispatch] = useReducer(cardsReducer, defaultCards);
+
+  return { cards, cardsDispatch };
 };
